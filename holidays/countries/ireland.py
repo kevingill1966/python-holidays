@@ -41,10 +41,7 @@ class Ireland(HolidayBase):
         if year >= 2023:
             name = "St. Brigid's Day"
             dt = date(year, FEB, 1)
-            if dt.weekday() == FRI:
-                self[dt] = name
-            else:
-                self[dt + rd(weekday=MO)] = name
+            self[dt if dt.weekday() == FRI else dt + rd(weekday=MO)] = name
 
         # St. Patrick's Day
         name = "St. Patrick's Day"
